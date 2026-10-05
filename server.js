@@ -21,6 +21,16 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(ROOT, "index.html"));
 });
 
+app.get("/robots.txt", (req, res) => {
+    res.type("text/plain");
+    res.sendFile(path.join(ROOT, "robots.txt"));
+});
+
+app.get("/sitemap.xml", (req, res) => {
+    res.type("application/xml");
+    res.sendFile(path.join(ROOT, "sitemap.xml"));
+});
+
 if (!API_KEY) {
     console.warn("⚠️ GEMINI_API_KEY não foi configurada.");
 }
