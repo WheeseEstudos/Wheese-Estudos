@@ -147,6 +147,26 @@ app.get("/health", (req, res) => {
     res.json({ ok: true, gemini: Boolean(API_KEY) });
 });
 
+app.get("/robots.txt", (req, res) => {
+    res.type("text/plain").send(
+`User-agent: *
+Allow: /
+
+Sitemap: https://wheese-estudos.onrender.com/sitemap.xml`
+    );
+});
+
+app.get("/sitemap.xml", (req, res) => {
+    res.type("application/xml").send(
+`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://wheese-estudos.onrender.com/</loc>
+    </url>
+</urlset>`
+    );
+});
+
 app.listen(PORT, "0.0.0.0", () => {
     console.log(`🌐 Wheese Estudos rodando na porta ${PORT}`);
     console.log(`🤖 Gemini: ${API_KEY ? "chave encontrada" : "chave não encontrada"}`);
