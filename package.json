@@ -1,0 +1,16 @@
+{
+  "name": "wheese-estudos",
+  "version": "1.0.0",
+  "description": "Wheese Estudos com IA Gemini",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@google/genai": "latest",
+    "express": "latest"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

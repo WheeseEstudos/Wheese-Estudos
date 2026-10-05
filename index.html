@@ -1,0 +1,3238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wheese Estudos</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+
+<style>
+
+/* =========================
+   CONFIGURAÇÕES GERAIS
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --principal: #635bff;
+    --principal-escura: #5147e5;
+    --fundo: #f4f6fb;
+    --card: #ffffff;
+    --texto: #1f2937;
+    --texto-fraco: #6b7280;
+    --borda: #e5e7eb;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+    transition: 0.3s;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+#telaLogin {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+    background:
+        radial-gradient(circle at top left, #7c3aed, transparent 35%),
+        radial-gradient(circle at bottom right, #4f46e5, transparent 35%),
+        #111827;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 430px;
+    background: hsl(0, 0%, 0%);
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+
+.logo-login {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-login img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+.logo-login .logo-nome {
+    font-size: 34px;
+    font-weight: 800;
+    color: var(--principal);
+}
+
+.subtitulo-login {
+    text-align: center;
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+.login-card input {
+    width: 100%;
+    padding: 15px;
+    margin: 8px 0 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    font-size: 16px;
+}
+
+.btn-principal {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: var(--principal);
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-principal:hover {
+    background: var(--principal-escura);
+}
+
+.btn-secundario {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    border: 1px solid var(--principal);
+    border-radius: 12px;
+    background: transparent;
+    color: var(--principal);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.erro {
+    color: #dc2626;
+    text-align: center;
+    margin-top: 15px;
+}
+
+
+/* =========================
+   SITE PRINCIPAL
+========================= */
+
+#site {
+    display: none;
+}
+
+.topo {
+    background:
+        linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    padding: 25px 30px;
+}
+
+.topo-conteudo {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.logo img {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-text small {
+    font-size: 12px;
+    opacity: .85;
+    margin-top: 2px;
+}
+
+.logo small {
+    display: block;
+    font-size: 13px;
+    opacity: 0.85;
+    margin-top: 3px;
+}
+
+.usuario-topo {
+    text-align: right;
+}
+
+.usuario-topo strong {
+    display: block;
+}
+
+.menu {
+    max-width: 1100px;
+    margin: 20px auto 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.menu button {
+    border: none;
+    padding: 11px 15px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    cursor: pointer;
+}
+
+.menu button:hover {
+    background: rgba(255,255,255,0.25);
+}
+
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+.pagina {
+    display: none;
+}
+
+.pagina.ativa {
+    display: block;
+}
+
+.hero {
+    background: var(--card);
+    border-radius: 25px;
+    padding: 35px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    margin-top: 0;
+    font-size: 32px;
+}
+
+.hero p {
+    color: var(--texto-fraco);
+    font-size: 17px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.card {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.06);
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.card input,
+.card select,
+.card textarea {
+    width: 100%;
+    padding: 14px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border: 1px solid var(--borda);
+    border-radius: 11px;
+    background: var(--card);
+    color: var(--texto);
+    font-size: 16px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.botao {
+    border: none;
+    padding: 13px 18px;
+    border-radius: 11px;
+    background: var(--principal);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botao:hover {
+    background: var(--principal-escura);
+}
+
+.botao-cinza {
+    border: none;
+    padding: 13px 18px;
+    border-radius: 11px;
+    background: #e5e7eb;
+    color: #111827;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* =========================
+   RESULTADO
+========================= */
+
+#resultado {
+    display: none;
+}
+
+.bloco {
+    background: #f8f9ff;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 15px;
+}
+
+.bloco h3 {
+    margin-top: 0;
+}
+
+
+/* =========================
+   REVISÃO DE CONTEÚDO
+========================= */
+.tema-capa{display:flex;align-items:center;gap:18px;padding:20px;border-radius:20px;background:linear-gradient(135deg,#eef2ff,#f5f3ff);margin-bottom:18px}.icone-tema{width:72px;height:72px;display:grid;place-items:center;border-radius:18px;background:white;font-size:38px;box-shadow:0 6px 20px rgba(0,0,0,.08);flex-shrink:0}.mini-label{font-size:12px;font-weight:800;letter-spacing:1px;color:var(--principal);margin-bottom:5px}.tema-capa h2{margin:0 0 4px}.tema-capa p{margin:0;color:var(--texto-fraco)}.visual-tema{display:none;margin:15px 0;padding:24px;border-radius:18px;text-align:center;background:var(--card);border:1px solid var(--borda);font-size:54px}#conteudoCompleto p{line-height:1.75;margin:10px 0}body.dark .tema-capa{background:linear-gradient(135deg,#1e293b,#312e81)}body.dark .icone-tema{background:#0f172a}
+
+/* =========================
+   CONFIGURAÇÕES
+========================= */
+
+.config-item {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--borda);
+}
+
+.config-item:last-child {
+    border-bottom: none;
+}
+
+.config-item h3 {
+    margin-bottom: 5px;
+}
+
+.config-item p {
+    color: var(--texto-fraco);
+}
+
+
+/* =========================
+   AVISOS
+========================= */
+
+.aviso {
+    padding: 15px;
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    border-radius: 12px;
+    color: #9a3412;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   MODO ESCURO
+========================= */
+
+body.dark {
+    --fundo: #0f172a;
+    --card: #1e293b;
+    --texto: #f1f5f9;
+    --texto-fraco: #94a3b8;
+    --borda: #334155;
+}
+
+body.dark .bloco {
+    background: #273449;
+}
+
+body.dark .botao-cinza {
+    background: #334155;
+    color: white;
+}
+
+body.dark .mensagem.usuario {
+    background: #312e81;
+}
+
+body.dark .mensagem.ia {
+    background: #334155;
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 800px) {
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .topo-conteudo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .usuario-topo {
+        text-align: left;
+    }
+
+    .hero h1 {
+        font-size: 26px;
+    }
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+    color: var(--texto-fraco);
+    padding: 30px;
+}
+
+
+
+/* =========================
+   IA WHEESE
+========================= */
+.ia-card { max-width: 900px; margin: 0 auto; }
+.ia-chat { min-height: 300px; max-height: 520px; overflow-y: auto; padding: 10px; display: flex; flex-direction: column; gap: 12px; background: var(--fundo); border: 1px solid var(--borda); border-radius: 18px; }
+.ia-mensagem { max-width: 85%; padding: 13px 16px; border-radius: 16px; line-height: 1.5; white-space: pre-wrap; }
+.ia-bot { align-self: flex-start; background: var(--card); border: 1px solid var(--borda); }
+.ia-user { align-self: flex-end; background: var(--principal); color: white; }
+.ia-contexto { margin-top: 12px; color: var(--texto-fraco); font-size: 14px; }
+.ia-form { margin-top: 12px; }
+.ia-form textarea { width: 100%; resize: vertical; min-height: 90px; padding: 14px; border: 1px solid var(--borda); border-radius: 14px; background: var(--card); color: var(--texto); font-size: 16px; outline: none; }
+.ia-form textarea:focus { border-color: var(--principal); }
+.ia-form .botao { margin-top: 10px; }
+.auto-estudo-aviso { margin-top: 10px; color: var(--texto-fraco); font-size: 14px; }
+.gerando-conteudo { margin-top: 12px; padding: 14px; border-radius: 12px; background: #eef2ff; color: #3730a3; font-weight: bold; display: none; }
+body.dark .gerando-conteudo { background: #312e81; color: #e0e7ff; }
+#conteudoCompleto.ai-gerado { white-space: pre-wrap; line-height: 1.7; }
+
+/* =========================
+   WHEESE IA - MODO ESCURO
+========================= */
+
+/* =========================
+   CHAT DA WHEESE IA
+========================= */
+
+.ia-container {
+    width: 100%;
+    max-width: 1100px;
+    height: calc(100vh - 110px);
+    min-height: 650px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #0b1220;
+    border: 1px solid #263244;
+    border-radius: 18px;
+    overflow: hidden;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+}
+
+
+/* TOPO */
+
+.ia-topo {
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 15px 22px;
+
+    background: #111827;
+    border-bottom: 1px solid #263244;
+}
+
+.ia-avatar {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #2563eb;
+    color: white;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.ia-titulo h2 {
+    margin: 0;
+
+    color: #f8fafc;
+    font-size: 18px;
+}
+
+.ia-titulo span {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+
+/* ÁREA DAS MENSAGENS */
+
+.ia-chat {
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding: 30px 10%;
+
+    background: #0b1220;
+
+    scroll-behavior: smooth;
+}
+
+
+/* MENSAGENS */
+
+.ia-mensagem {
+    max-width: 850px;
+
+    margin-bottom: 28px;
+
+    padding: 14px 18px;
+
+    border-radius: 16px;
+
+    line-height: 1.7;
+
+    font-size: 15px;
+
+    word-wrap: break-word;
+}
+
+
+/* IA */
+
+.ia-bot {
+    margin-right: auto;
+
+    background: transparent;
+
+    color: #e5e7eb;
+
+    border: none;
+
+    padding-left: 0;
+}
+
+
+/* USUÁRIO */
+
+.ia-user {
+    margin-left: auto;
+
+    background: #2563eb;
+
+    color: white;
+
+    max-width: 700px;
+
+    border-radius: 18px;
+}
+
+
+/* CONTEXTO */
+
+.ia-contexto {
+    flex-shrink: 0;
+
+    padding: 7px 20px;
+
+    background: #111827;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    border-top: 1px solid #263244;
+}
+
+
+/* ÁREA DE ENVIO */
+
+.ia-form {
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: flex-end;
+
+    gap: 10px;
+
+    padding: 14px 20px 18px;
+
+    background: #111827;
+}
+
+
+/* CAIXA DE TEXTO */
+
+.ia-form textarea {
+    flex: 1;
+
+    resize: none;
+
+    min-height: 52px;
+    max-height: 180px;
+
+    padding: 15px 17px;
+
+    border: 1px solid #334155;
+    border-radius: 17px;
+
+    outline: none;
+
+    background: #172235;
+    color: #f1f5f9;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    box-sizing: border-box;
+
+    transition: 0.2s;
+}
+
+.ia-form textarea::placeholder {
+    color: #718096;
+}
+
+.ia-form textarea:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+
+/* BOTÃO ENVIAR */
+
+.ia-enviar {
+    flex-shrink: 0;
+
+    width: 48px;
+    height: 48px;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 15px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.2s;
+}
+
+.ia-enviar:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-1px);
+}
+
+.ia-enviar:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* BARRA DE ROLAGEM */
+
+.ia-chat::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ia-chat::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ia-chat::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 10px;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 600px) {
+
+    .ia-container {
+        height: calc(100dvh - 90px);
+        min-height: 500px;
+
+        border-radius: 14px;
+    }
+
+    .ia-topo {
+        padding: 13px 15px;
+    }
+
+    .ia-chat {
+        padding: 20px 15px;
+    }
+
+    .ia-mensagem {
+        max-width: 92%;
+
+        font-size: 14px;
+
+        margin-bottom: 22px;
+    }
+
+    .ia-user {
+        max-width: 85%;
+    }
+
+    .ia-form {
+        padding: 10px;
+    }
+
+    .ia-form textarea {
+        min-height: 48px;
+
+        padding: 13px;
+
+        font-size: 14px;
+    }
+
+    .ia-enviar {
+        width: 46px;
+        height: 46px;
+    }
+
+    .ia-contexto {
+        padding: 6px 12px;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     TELA DE LOGIN
+========================= -->
+
+<div id="telaLogin">
+
+    <div class="login-card">
+
+        <div class="logo-login">
+            <img src="assets/logo.png" alt="Logo Wheese Estudos">
+            <div class="logo-nome">Wheese Estudos</div>
+        </div>
+
+        <p class="subtitulo-login">
+            Estude melhor. Aprenda mais.
+        </p>
+
+
+        <div id="loginArea">
+
+            <h2>Entrar</h2>
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="loginEmail"
+                placeholder="seu@email.com"
+            >
+
+
+            <label>Senha</label>
+
+            <input
+                type="password"
+                id="loginSenha"
+                placeholder="Sua senha"
+            >
+
+
+            <button
+                class="btn-principal"
+                onclick="entrar()"
+            >
+                Entrar
+            </button>
+
+
+            <button
+                class="btn-secundario"
+                onclick="mostrarCadastro()"
+            >
+                Criar conta
+            </button>
+
+            <p id="erroLogin" class="erro"></p>
+
+        </div>
+
+
+        <div id="cadastroArea" style="display:none;">
+
+            <h2>Criar conta</h2>
+
+            <label>Nome</label>
+
+            <input
+                type="text"
+                id="cadastroNome"
+                placeholder="Seu nome"
+            >
+
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="cadastroEmail"
+                placeholder="seu@email.com"
+            >
+
+
+            <label>Senha</label>
+
+            <input
+                type="password"
+                id="cadastroSenha"
+                placeholder="Crie uma senha"
+            >
+
+
+            <button
+                class="btn-principal"
+                onclick="cadastrar()"
+            >
+                Criar conta
+            </button>
+
+
+            <button
+                class="btn-secundario"
+                onclick="mostrarLogin()"
+            >
+                Já tenho uma conta
+            </button>
+
+            <p id="erroCadastro" class="erro"></p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     SITE
+========================= -->
+
+<div id="site">
+
+
+<header class="topo">
+
+    <div class="topo-conteudo">
+
+        <div>
+
+            <div class="logo">
+                <img src="assets/logo.png" alt="Logo Wheese Estudos">
+                <div class="logo-text">
+                    <span>Wheese Estudos</span>
+                    <small>Seu espaço inteligente de estudos</small>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="usuario-topo">
+
+            Olá,
+            <strong id="nomeUsuario">
+                estudante
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="menu">
+
+        <button onclick="mostrarPagina('inicio')">
+            🏠 Início
+        </button>
+
+        <button onclick="mostrarPagina('estudar')">
+            📚 Estudar
+        </button>
+
+        <button onclick="mostrarPagina('ia')">
+            🤖 IA
+        </button>
+
+        
+
+        <button onclick="mostrarPagina('progresso')">
+            📊 Progresso
+        </button>
+
+        <button onclick="mostrarPagina('configuracoes')">
+            ⚙️ Configurações
+        </button>
+
+        <button onclick="sair()">
+            🚪 Sair
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- =========================
+     INÍCIO
+========================= -->
+
+<section id="pagina-inicio" class="pagina ativa">
+
+    <div class="hero">
+
+        <h1>
+            👋 Bem-vindo ao Wheese Estudos
+        </h1>
+
+        <p>
+            Escolha seu ano, encontre uma matéria
+            e comece a estudar.
+        </p>
+
+        <button
+            class="botao"
+            onclick="mostrarPagina('estudar')"
+        >
+            🚀 Começar a estudar
+        </button>
+
+    </div>
+
+
+    <div class="grid">
+
+        <div class="card">
+
+            <h2>📚 Conteúdos</h2>
+
+            <p>
+                Resumos e explicações organizados
+                por ano escolar.
+            </p>
+
+        </div>
+<div class="card">
+
+            <h2>🎯 Seu progresso</h2>
+
+            <p>
+                Acompanhe o que você já estudou.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     ESTUDAR
+========================= -->
+
+<section id="pagina-estudar" class="pagina">
+
+    <div class="card">
+
+        <h2>📚 O que você quer estudar?</h2>
+        <p style="color:var(--texto-fraco);margin-top:-5px;">Escolha o ano, a matéria e o tema. A IA prepara automaticamente uma aula completa para você.</p>
+
+
+        <label>🎓 Ano escolar</label>
+
+        <select
+            id="ano"
+            onchange="atualizarMaterias()"
+        >
+
+            <option value="">
+                Escolha o ano
+            </option>
+
+            <option value="6">
+                6º ano
+            </option>
+
+            <option value="7">
+                7º ano
+            </option>
+
+            <option value="8">
+                8º ano
+            </option>
+
+            <option value="9">
+                9º ano
+            </option>
+
+        </select>
+
+
+        <label>📖 Matéria</label>
+
+        <select
+            id="materia"
+            onchange="atualizarTemas()"
+        >
+
+            <option value="">
+                Escolha primeiro o ano
+            </option>
+
+        </select>
+
+
+        <label>
+            🔎 Digite o tema que deseja estudar
+        </label>
+
+        <input
+            type="text"
+            id="temaDigitado"
+            placeholder="Ex: quadriláteros"
+        >
+
+
+        <label>
+            📚 Ou escolha um tema pronto
+        </label>
+
+        <select id="tema" onchange="estudarTema()">
+
+            <option value="">
+                Escolha um tema
+            </option>
+
+        </select>
+
+        <div class="auto-estudo-aviso">⚡ Ao escolher um tema, a aula começa automaticamente.</div>
+        <div id="statusConteudo" class="gerando-conteudo">⚡ Preparando sua aula...</div>
+
+    </div>
+
+
+    <div id="resultado" class="card">
+
+        <div class="tema-capa">
+            <div id="iconeTema" class="icone-tema">📚</div>
+            <div><div class="mini-label">WHEESE ESTUDOS • REVISÃO</div><h2 id="tituloResultado">📖 Material</h2><p id="subtituloResultado"></p></div>
+        </div>
+
+        <div id="visualTema" class="visual-tema"></div>
+
+        <div class="bloco"><h3>📖 Conteúdo completo</h3><div id="conteudoCompleto"></div></div>
+        <div class="bloco"><h3>📝 Resumo para revisar</h3><p id="resumo"></p></div>
+        <div class="bloco"><h3>🧠 O que você precisa lembrar</h3><ul id="pontos"></ul></div>
+        <div class="bloco"><h3>❓ Questões para praticar</h3><ol id="questoes"></ol></div>
+        <div class="bloco"><h3>💡 Dica</h3><p id="dica"></p></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     IA
+========================= -->
+
+<section id="pagina-ia" class="pagina">
+
+    <div class="ia-container">
+
+    <div class="ia-topo">
+        <div class="ia-avatar">✦</div>
+
+        <div class="ia-titulo">
+            <h2>Wheese IA</h2>
+            <span>Seu assistente de estudos</span>
+        </div>
+    </div>
+
+
+    <div id="iaChat" class="ia-chat">
+
+        <div class="ia-mensagem ia-bot">
+            <strong>Olá! 👋</strong><br><br>
+            Eu sou a IA do Wheese Estudos.
+            Posso explicar matérias, resolver exercícios,
+            criar questões e ajudar você a estudar.
+        </div>
+
+    </div>
+
+
+    <div class="ia-contexto" id="iaContexto">
+        📚 Sem tema específico selecionado.
+    </div>
+
+
+    <div class="ia-form">
+
+        <textarea
+            id="iaPergunta"
+            rows="1"
+            placeholder="Digite sua dúvida..."
+        ></textarea>
+
+        <button
+            id="iaEnviar"
+            class="ia-enviar"
+            onclick="perguntarIA()"
+            title="Enviar pergunta"
+        >
+            ➤
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     PROGRESSO
+========================= -->
+
+<section id="pagina-progresso" class="pagina">
+
+    <div class="hero">
+
+        <h1>📊 Seu progresso</h1>
+
+        <p>
+            Aqui vamos acompanhar seus estudos.
+        </p>
+
+    </div>
+
+
+    <div class="grid">
+
+        <div class="card">
+
+            <h2>📚 Temas estudados</h2>
+
+            <h1 id="contadorTemas">
+                0
+            </h1>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>🎯 Ano</h2>
+
+            <h1 id="progressoAno">
+                -
+            </h1>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>⭐ Status</h2>
+
+            <h3>
+                Começando
+            </h3>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CONFIGURAÇÕES
+========================= -->
+
+<section id="pagina-configuracoes" class="pagina">
+
+    <div class="card">
+
+        <h2>⚙️ Configurações</h2>
+
+
+        <div class="config-item">
+
+            <h3>🎨 Aparência</h3>
+
+            <p>
+                Escolha como o Wheese Estudos aparece.
+            </p>
+
+            <button
+                class="botao"
+                onclick="modoEscuro()"
+            >
+                🌙 Modo escuro
+            </button>
+
+            <button
+                class="botao-cinza"
+                onclick="modoClaro()"
+            >
+                ☀️ Modo claro
+            </button>
+
+        </div>
+
+
+        <div class="config-item">
+
+            <h3>🔤 Tamanho do texto</h3>
+
+            <p>
+                Ajuste o tamanho para facilitar a leitura.
+            </p>
+
+            <button
+                class="botao"
+                onclick="aumentarTexto()"
+            >
+                🔎 Aumentar
+            </button>
+
+            <button
+                class="botao-cinza"
+                onclick="diminuirTexto()"
+            >
+                🔍 Diminuir
+            </button>
+
+        </div>
+
+
+        <div class="config-item">
+
+            <h3>🎓 Ano escolar</h3>
+
+            <p>
+                Escolha o seu ano principal.
+            </p>
+
+            <select
+                id="configAno"
+                onchange="salvarAnoConfig()"
+            >
+
+                <option value="6">
+                    6º ano
+                </option>
+
+                <option value="7">
+                    7º ano
+                </option>
+
+                <option value="8">
+                    8º ano
+                </option>
+
+                <option value="9">
+                    9º ano
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="config-item">
+
+            <h3>🤟 Acessibilidade</h3>
+
+            <p>
+                Use o VLibras para traduzir conteúdos
+                para Libras.
+            </p>
+
+            <button
+                class="botao"
+                onclick="abrirLibras()"
+            >
+                🤟 Abrir VLibras
+            </button>
+
+        </div>
+
+
+        <div class="config-item">
+
+            <h3>👤 Conta</h3>
+
+            <p id="emailConfiguracoes">
+                -
+            </p>
+
+            <button
+                class="botao-cinza"
+                onclick="sair()"
+            >
+                🚪 Sair da conta
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+    Wheese Estudos © 2026
+
+</footer>
+
+</div>
+
+
+
+<!-- =========================
+     VLIBRAS
+========================= -->
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+<script>
+
+new window.VLibras.Widget({
+    rootPath: "https://vlibras.gov.br/app",
+    avatar: "random",
+    position: "R"
+});
+
+</script>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+
+/* =========================
+   BANCO DE CONTEÚDOS
+========================= */
+
+const conteudos = {
+
+    "6": {
+
+        matematica: {
+
+            "Frações": {
+                resumo: "Frações representam partes de um todo. O número de cima é o numerador e o número de baixo é o denominador.",
+                pontos: [
+                    "Numerador indica quantas partes foram consideradas.",
+                    "Denominador indica em quantas partes o todo foi dividido.",
+                    "Frações podem representar partes de um inteiro."
+                ],
+                questoes: [
+                    "O que representa o numerador?",
+                    "O que representa o denominador?",
+                    "Quanto é 1/2 + 1/2?"
+                ]
+            },
+
+            "Números inteiros": {
+                resumo: "Números inteiros incluem números positivos, negativos e o zero.",
+                pontos: [
+                    "Podem ser positivos ou negativos.",
+                    "O zero também é um número inteiro.",
+                    "Podem ser representados em uma reta numérica."
+                ],
+                questoes: [
+                    "O que são números inteiros?",
+                    "Qual é maior: -2 ou -5?",
+                    "Qual número vem depois de -1?"
+                ]
+            }
+
+        },
+
+        ciencias: {
+
+            "Sistema Solar": {
+                resumo: "O Sistema Solar é formado pelo Sol e pelos corpos celestes que orbitam ao seu redor.",
+                pontos: [
+                    "O Sol é uma estrela.",
+                    "Os planetas orbitam o Sol.",
+                    "A Terra é um dos planetas do Sistema Solar."
+                ],
+                questoes: [
+                    "O que é o Sol?",
+                    "Quantos planetas existem no Sistema Solar?",
+                    "Qual planeta é conhecido como planeta vermelho?"
+                ]
+            }
+
+        }
+
+    },
+
+
+    "7": {
+
+        matematica: {
+
+            "Equações": {
+                resumo: "Equações são igualdades que possuem uma incógnita. Resolver uma equação significa descobrir o valor da incógnita.",
+                pontos: [
+                    "A incógnita geralmente é representada por uma letra.",
+                    "Os dois lados da igualdade devem permanecer equivalentes.",
+                    "O objetivo é encontrar o valor desconhecido."
+                ],
+                questoes: [
+                    "Resolva: x + 5 = 12.",
+                    "Resolva: 2x = 18.",
+                    "O que é uma incógnita?"
+                ]
+            }
+
+        },
+
+        historia: {
+
+            "Revolução Industrial": {
+                resumo: "A Revolução Industrial começou na Inglaterra e transformou profundamente a produção, o trabalho e a sociedade.",
+                pontos: [
+                    "Começou na Inglaterra.",
+                    "Máquinas passaram a ter grande importância.",
+                    "As fábricas cresceram.",
+                    "O trabalho urbano aumentou."
+                ],
+                questoes: [
+                    "Onde começou a Revolução Industrial?",
+                    "Qual foi a importância das máquinas?",
+                    "O que aconteceu com as fábricas?"
+                ]
+            }
+
+        }
+
+    },
+
+
+    "8": {
+        "matematica": {
+                "Razão e proporção": {
+                        "icone": "⚖️",
+                        "resumo": "Razão compara grandezas e proporção mostra razões equivalentes.",
+                        "conteudo": "Razão é uma comparação por divisão, como 2/3. Proporção é uma igualdade entre razões, como 2/3 = 4/6. Em uma proporção a/b = c/d, a multiplicação cruzada dá a·d = b·c. As unidades precisam ser compatíveis antes da comparação.",
+                        "pontos": [
+                                "Razão compara duas grandezas.",
+                                "Proporção é uma igualdade entre razões.",
+                                "Use multiplicação cruzada para encontrar um termo desconhecido.",
+                                "Confira se as unidades estão na mesma medida."
+                        ],
+                        "questoes": [
+                                "Simplifique 8/12.",
+                                "Resolva x/5 = 6/10.",
+                                "Uma receita usa 2 xícaras de farinha para 1 de leite. Qual a razão farinha:leite?"
+                        ],
+                        "dica": "Na proporção, multiplique cruzado e depois isole o x."
+                },
+                "Porcentagem": {
+                        "icone": "💯",
+                        "resumo": "Porcentagem representa uma parte de 100.",
+                        "conteudo": "Porcentagem usa o símbolo %. Assim, 25% = 25/100 = 0,25. Para calcular p% de uma quantidade, multiplique a quantidade por p/100. Descontos reduzem o preço e acréscimos aumentam o preço.",
+                        "pontos": [
+                                "1% = 1/100.",
+                                "50% é metade.",
+                                "25% é um quarto.",
+                                "Desconto e acréscimo são calculados sobre um valor de referência."
+                        ],
+                        "questoes": [
+                                "Quanto é 20% de 150?",
+                                "Quanto é 35% de 200?",
+                                "Um produto de R$100 teve 15% de desconto. Qual o novo preço?"
+                        ],
+                        "dica": "Transforme a porcentagem em decimal ou fração antes de calcular."
+                },
+                "Potenciação e radiciação": {
+                        "icone": "√️",
+                        "resumo": "Potenciação representa multiplicações repetidas e radiciação é sua operação inversa.",
+                        "conteudo": "Em a^n, a é a base e n é o expoente. Por exemplo, 2³ = 8. A raiz quadrada de um número é o valor que, elevado ao quadrado, produz esse número. Propriedades de potências ajudam a simplificar cálculos.",
+                        "pontos": [
+                                "a² = a·a.",
+                                "a³ = a·a·a.",
+                                "√25 = 5.",
+                                "Potências de 10 ajudam a representar números grandes ou pequenos."
+                        ],
+                        "questoes": [
+                                "Calcule 3².",
+                                "Calcule 2⁵.",
+                                "Qual é √81?"
+                        ],
+                        "dica": "Na raiz quadrada, pergunte qual número vezes ele mesmo dá o resultado."
+                },
+                "Expressões algébricas": {
+                        "icone": "🔤",
+                        "resumo": "Expressões algébricas misturam números, operações e letras que representam valores.",
+                        "conteudo": "Termos semelhantes possuem a mesma parte literal e podem ser reduzidos. Assim, 3x + 2x = 5x. A propriedade distributiva transforma a(b+c) em ab+ac. A ordem das operações continua valendo.",
+                        "pontos": [
+                                "A letra pode representar uma variável.",
+                                "Só juntamos termos semelhantes.",
+                                "Use a distributiva para desenvolver parênteses.",
+                                "Respeite a ordem das operações."
+                        ],
+                        "questoes": [
+                                "Simplifique 4x + 3x.",
+                                "Desenvolva 2(x+5).",
+                                "Reduza 5a - 2a + a."
+                        ],
+                        "dica": "Só junte termos que tenham a mesma parte literal."
+                },
+                "Equações do 1º grau": {
+                        "icone": "🧮",
+                        "resumo": "Equações do 1º grau possuem incógnita com expoente 1.",
+                        "conteudo": "Resolver uma equação significa encontrar o valor que torna a igualdade verdadeira. Para isso, usamos operações inversas e fazemos a mesma operação nos dois membros. Exemplo: 2x+4=14, então 2x=10 e x=5.",
+                        "pontos": [
+                                "Isole a incógnita.",
+                                "Use operações inversas.",
+                                "Mantenha os dois membros equilibrados.",
+                                "Confira substituindo a resposta."
+                        ],
+                        "questoes": [
+                                "Resolva x+9=17.",
+                                "Resolva 4x-3=21.",
+                                "Resolva 2x+6=18."
+                        ],
+                        "dica": "Pense na equação como uma balança: os dois lados precisam continuar equilibrados."
+                },
+                "Quadriláteros": {
+                        "icone": "🔷",
+                        "resumo": "Quadriláteros têm quatro lados e soma dos ângulos internos igual a 360°.",
+                        "conteudo": "Quadriláteros incluem quadrado, retângulo, losango, paralelogramo e trapézio. O quadrado possui quatro lados iguais e quatro ângulos retos. O retângulo possui quatro ângulos retos. O losango possui quatro lados iguais. O paralelogramo possui dois pares de lados paralelos. A soma dos ângulos internos de qualquer quadrilátero é 360°.",
+                        "pontos": [
+                                "Todo quadrilátero tem quatro lados.",
+                                "A soma dos ângulos internos é 360°.",
+                                "Quadrado é simultaneamente retângulo e losango.",
+                                "No paralelogramo, lados e ângulos opostos são congruentes."
+                        ],
+                        "questoes": [
+                                "Qual é a soma dos ângulos internos de um quadrilátero?",
+                                "Cite uma propriedade do losango.",
+                                "Por que o quadrado pode ser considerado um retângulo?"
+                        ],
+                        "dica": "Guarde: quadrilátero = 4 lados = 360°."
+                },
+                "Teorema de Pitágoras": {
+                        "icone": "📐",
+                        "resumo": "Em um triângulo retângulo, a²+b²=c².",
+                        "conteudo": "Em um triângulo retângulo, os catetos são os lados que formam o ângulo de 90° e a hipotenusa é o lado oposto a esse ângulo. O Teorema de Pitágoras diz que o quadrado da hipotenusa é igual à soma dos quadrados dos catetos.",
+                        "pontos": [
+                                "Aplica-se a triângulos retângulos.",
+                                "A hipotenusa é o maior lado.",
+                                "A hipotenusa fica oposta ao ângulo reto.",
+                                "Fórmula: a²+b²=c²."
+                        ],
+                        "questoes": [
+                                "Catetos 3 e 4: qual a hipotenusa?",
+                                "Qual lado é a hipotenusa?",
+                                "Se c=13 e a=5, encontre b."
+                        ],
+                        "dica": "O trio 3-4-5 é o exemplo clássico."
+                },
+                "Área e volume": {
+                        "icone": "📦",
+                        "resumo": "Área mede uma superfície e volume mede o espaço ocupado por um sólido.",
+                        "conteudo": "Área usa unidades quadradas, como cm². Volume usa unidades cúbicas, como cm³. Para retângulos, A=b·h. Para um paralelepípedo retângulo, V=comprimento·largura·altura.",
+                        "pontos": [
+                                "Área usa unidades².",
+                                "Volume usa unidades³.",
+                                "Retângulo: A=b·h.",
+                                "Paralelepípedo: V=a·b·c."
+                        ],
+                        "questoes": [
+                                "Qual é a área de um retângulo 8×5 cm?",
+                                "Qual é o volume de uma caixa 2×3×4 cm?",
+                                "Qual a diferença entre área e volume?"
+                        ],
+                        "dica": "Área é a medida da superfície; volume é o espaço ocupado."
+                },
+                "Estatística e gráficos": {
+                        "icone": "📊",
+                        "resumo": "Estatística organiza e interpreta dados em tabelas e gráficos.",
+                        "conteudo": "Dados podem ser apresentados em tabelas, gráficos de barras, linhas e setores. A média aritmética é a soma dos valores dividida pela quantidade de valores. Ao interpretar um gráfico, observe título, legenda, eixos, escala e unidade.",
+                        "pontos": [
+                                "Média = soma ÷ quantidade.",
+                                "Tabelas organizam dados.",
+                                "Gráficos facilitam comparações.",
+                                "Escala e unidade são essenciais para uma leitura correta."
+                        ],
+                        "questoes": [
+                                "Calcule a média de 6, 8 e 10.",
+                                "O que o eixo vertical pode representar?",
+                                "Para que serve um gráfico de setores?"
+                        ],
+                        "dica": "Antes de olhar os números, leia título, legenda, escala e unidades."
+                }
+        },
+        "portugues": {
+                "Classes de palavras": {
+                        "icone": "🔤",
+                        "resumo": "As classes de palavras agrupam palavras de acordo com suas funções.",
+                        "conteudo": "Substantivo nomeia seres, objetos, lugares e ideias. Adjetivo caracteriza. Verbo indica ação, estado ou fenômeno. Advérbio indica circunstâncias e modifica outras palavras. Pronomes substituem ou acompanham nomes. Artigos, numerais, preposições, conjunções e interjeições também exercem funções específicas.",
+                        "pontos": [
+                                "Substantivo: nome.",
+                                "Adjetivo: característica.",
+                                "Verbo: ação, estado ou fenômeno.",
+                                "Advérbio: circunstância.",
+                                "Pronome: referência ao nome."
+                        ],
+                        "questoes": [
+                                "Identifique o verbo em uma frase.",
+                                "O que um adjetivo faz?",
+                                "Dê um exemplo de pronome."
+                        ],
+                        "dica": "Observe a função da palavra dentro da frase, não apenas o significado isolado."
+                },
+                "Termos da oração": {
+                        "icone": "🧩",
+                        "resumo": "Sujeito e predicado são partes centrais da oração.",
+                        "conteudo": "O sujeito é o termo sobre o qual se declara algo. O predicado é aquilo que se declara sobre o sujeito. O sujeito pode ser simples, composto, oculto ou indeterminado. O predicado pode apresentar diferentes estruturas e complementos.",
+                        "pontos": [
+                                "Sujeito é o termo de que se declara algo.",
+                                "Predicado contém a informação sobre o sujeito.",
+                                "O sujeito pode ser simples ou composto.",
+                                "Procure o verbo para começar a analisar."
+                        ],
+                        "questoes": [
+                                "Encontre sujeito e predicado em uma frase.",
+                                "O que é sujeito oculto?",
+                                "Qual é a função do predicado?"
+                        ],
+                        "dica": "Comece localizando o verbo e pergunte quem pratica ou sofre a ação."
+                },
+                "Transitividade verbal": {
+                        "icone": "🔗",
+                        "resumo": "A transitividade mostra se o verbo precisa de complemento.",
+                        "conteudo": "Verbos intransitivos não precisam de complemento. Verbos transitivos diretos ligam-se ao objeto direto sem preposição obrigatória. Transitivos indiretos exigem preposição. Alguns verbos podem ser transitivos diretos e indiretos. A transitividade depende do uso do verbo na oração.",
+                        "pontos": [
+                                "Objeto direto geralmente não exige preposição obrigatória.",
+                                "Objeto indireto exige preposição.",
+                                "A transitividade depende do contexto.",
+                                "Verbos de ligação relacionam o sujeito a uma característica."
+                        ],
+                        "questoes": [
+                                "O que é objeto direto?",
+                                "O que é objeto indireto?",
+                                "Identifique o complemento em 'João comprou um livro'."
+                        ],
+                        "dica": "Pergunte ao verbo 'o quê?' ou 'quem?' para ajudar a encontrar o objeto direto."
+                },
+                "Concordância verbal e nominal": {
+                        "icone": "✍️",
+                        "resumo": "Concordância faz palavras relacionadas combinarem corretamente.",
+                        "conteudo": "Na concordância verbal, o verbo se relaciona com o sujeito em pessoa e número. Na concordância nominal, artigos, adjetivos, pronomes e outras palavras relacionadas concordam com o substantivo em gênero e número quando necessário.",
+                        "pontos": [
+                                "Verbo concorda com o sujeito.",
+                                "Adjetivos concordam com substantivos.",
+                                "Observe singular e plural.",
+                                "Observe gênero quando aplicável."
+                        ],
+                        "questoes": [
+                                "Corrija: 'Os aluno estudou'.",
+                                "Em 'as casas bonitas', quais palavras concordam?",
+                                "Por que a concordância é importante?"
+                        ],
+                        "dica": "Ache o sujeito primeiro e depois ajuste o verbo."
+                },
+                "Pontuação": {
+                        "icone": "❗",
+                        "resumo": "Pontuação organiza a estrutura e o sentido do texto.",
+                        "conteudo": "Ponto, vírgula, dois-pontos, ponto e vírgula, travessão e outros sinais podem indicar encerramento, enumeração, explicação, destaque ou mudança de estrutura. A vírgula não deve separar sujeito e verbo sem uma razão sintática.",
+                        "pontos": [
+                                "Ponto encerra uma declaração.",
+                                "Dois-pontos podem introduzir explicação ou enumeração.",
+                                "Vírgulas podem separar elementos de uma lista.",
+                                "Pontuação influencia o sentido."
+                        ],
+                        "questoes": [
+                                "Para que servem os dois-pontos?",
+                                "Por que sujeito e verbo não devem ser separados por vírgula sem motivo?",
+                                "Escreva uma enumeração usando vírgulas."
+                        ],
+                        "dica": "Pontuação não é apenas pausa para respirar: ela organiza a frase."
+                },
+                "Figuras de linguagem": {
+                        "icone": "🎭",
+                        "resumo": "Figuras de linguagem criam efeitos de sentido.",
+                        "conteudo": "Metáfora aproxima ideias sem comparação explícita. Comparação usa termos como 'como'. Personificação atribui características humanas a seres não humanos. Hipérbole exagera. Ironia pode produzir um sentido diferente do literal.",
+                        "pontos": [
+                                "Metáfora: associação implícita.",
+                                "Comparação: aproximação explícita.",
+                                "Personificação: característica humana.",
+                                "Hipérbole: exagero intencional."
+                        ],
+                        "questoes": [
+                                "O que é metáfora?",
+                                "O que é hipérbole?",
+                                "Dê um exemplo de personificação."
+                        ],
+                        "dica": "Pergunte se a frase está sendo usada literalmente ou para criar um efeito."
+                },
+                "Gêneros textuais": {
+                        "icone": "📄",
+                        "resumo": "Gêneros textuais são formas de texto usadas em diferentes situações.",
+                        "conteudo": "Notícia, reportagem, artigo de opinião, crônica, carta, resenha e anúncio têm finalidades, estruturas e linguagens diferentes. Para identificar um gênero, observe quem escreve, para quem, com qual objetivo e em qual contexto.",
+                        "pontos": [
+                                "Cada gênero tem uma finalidade.",
+                                "Público e contexto influenciam a linguagem.",
+                                "Estrutura e recursos variam.",
+                                "O mesmo tema pode aparecer em vários gêneros."
+                        ],
+                        "questoes": [
+                                "Qual a finalidade de uma notícia?",
+                                "O que diferencia opinião de informação?",
+                                "Cite três gêneros textuais."
+                        ],
+                        "dica": "Pergunte: quem fala, para quem, sobre o quê e com qual objetivo?"
+                },
+                "Dissertação argumentativa": {
+                        "icone": "💬",
+                        "resumo": "Texto argumentativo apresenta uma tese e usa argumentos para defendê-la.",
+                        "conteudo": "Uma dissertação argumentativa costuma apresentar tema e tese na introdução, desenvolver argumentos nos parágrafos seguintes e concluir retomando a discussão. Conectivos ajudam a organizar causa, oposição, consequência e conclusão.",
+                        "pontos": [
+                                "Introdução apresenta tema e tese.",
+                                "Desenvolvimento apresenta argumentos.",
+                                "Conclusão fecha a discussão.",
+                                "Conectivos dão coesão."
+                        ],
+                        "questoes": [
+                                "O que é tese?",
+                                "Qual a função dos argumentos?",
+                                "Cite um conectivo de conclusão."
+                        ],
+                        "dica": "Defina sua opinião em uma frase e liste dois argumentos antes de escrever."
+                }
+        },
+        "ciencias": {
+                "Energia elétrica": {
+                        "icone": "⚡",
+                        "resumo": "A energia elétrica pode ser transformada em luz, calor, movimento e som.",
+                        "conteudo": "Aparelhos elétricos transformam energia elétrica em outras formas. Uma lâmpada transforma parte em luz e calor; um ventilador transforma principalmente em movimento. O estudo de energia também envolve consumo, potência e segurança.",
+                        "pontos": [
+                                "Energia pode ser transformada.",
+                                "Lâmpadas produzem luz e calor.",
+                                "Motores produzem movimento.",
+                                "Uso seguro da eletricidade é essencial."
+                        ],
+                        "questoes": [
+                                "Que transformação ocorre em uma lâmpada?",
+                                "Que transformação ocorre em um ventilador?",
+                                "Cite três aparelhos e suas transformações."
+                        ],
+                        "dica": "Pergunte o que o aparelho recebe e qual forma de energia ele entrega principalmente."
+                },
+                "Circuitos elétricos": {
+                        "icone": "🔌",
+                        "resumo": "Circuitos elétricos permitem a circulação de corrente por um caminho fechado.",
+                        "conteudo": "Um circuito simples pode conter fonte, fios, interruptor e receptor. A fonte fornece energia, os fios conduzem cargas, o interruptor controla o circuito e o receptor transforma energia elétrica. Quando o caminho está interrompido, a corrente não circula pelo circuito completo.",
+                        "pontos": [
+                                "Circuito precisa de caminho fechado.",
+                                "Pilha ou fonte fornece energia.",
+                                "Interruptor abre ou fecha o circuito.",
+                                "Receptor transforma energia elétrica."
+                        ],
+                        "questoes": [
+                                "Quais são partes de um circuito simples?",
+                                "O que acontece quando o circuito é aberto?",
+                                "Qual a função do interruptor?"
+                        ],
+                        "dica": "Imagine o circuito como uma pista: se houver um buraco, o caminho não fecha."
+                },
+                "Matriz elétrica brasileira": {
+                        "icone": "🇧🇷",
+                        "resumo": "A matriz elétrica mostra as fontes usadas para produzir eletricidade.",
+                        "conteudo": "O Brasil possui participação importante de fontes renováveis, especialmente hidrelétrica, além de eólica, solar e biomassa. A composição da matriz pode mudar conforme chuvas, demanda, investimentos e condições econômicas.",
+                        "pontos": [
+                                "Matriz elétrica trata da produção de eletricidade.",
+                                "Hidrelétrica tem grande importância no Brasil.",
+                                "Eólica e solar são renováveis.",
+                                "A composição varia com o tempo."
+                        ],
+                        "questoes": [
+                                "O que é matriz elétrica?",
+                                "Cite duas fontes renováveis usadas no Brasil.",
+                                "Por que a matriz pode mudar?"
+                        ],
+                        "dica": "Não confunda matriz elétrica com matriz energética, que é mais ampla."
+                },
+                "Reprodução dos seres vivos": {
+                        "icone": "🧬",
+                        "resumo": "A reprodução permite a continuidade das espécies.",
+                        "conteudo": "Na reprodução assexuada, geralmente um único organismo origina descendentes geneticamente muito semelhantes. Na reprodução sexuada, ocorre participação de gametas e combinação de material genético, aumentando a variabilidade entre descendentes.",
+                        "pontos": [
+                                "Assexuada: geralmente um organismo e pouca variabilidade.",
+                                "Sexuada: envolve gametas.",
+                                "Gametas são células reprodutivas.",
+                                "A reprodução está ligada à continuidade das espécies."
+                        ],
+                        "questoes": [
+                                "Qual a diferença entre reprodução sexuada e assexuada?",
+                                "O que são gametas?",
+                                "Qual tende a gerar maior variabilidade genética?"
+                        ],
+                        "dica": "Sexuada envolve combinação de material genético; assexuada costuma ser mais direta."
+                },
+                "Genética e hereditariedade": {
+                        "icone": "🧬",
+                        "resumo": "Genética estuda hereditariedade e transmissão de características.",
+                        "conteudo": "DNA armazena informações genéticas. Genes são segmentos de DNA relacionados a características. Cromossomos organizam o DNA. A manifestação de muitas características depende da interação entre genética e ambiente.",
+                        "pontos": [
+                                "DNA contém informação genética.",
+                                "Genes são segmentos de DNA.",
+                                "Cromossomos organizam o DNA.",
+                                "Hereditariedade é a transmissão de características entre gerações."
+                        ],
+                        "questoes": [
+                                "O que é DNA?",
+                                "O que é um gene?",
+                                "O que significa hereditariedade?"
+                        ],
+                        "dica": "DNA guarda as informações genéticas; gene é uma parte dessas informações."
+                },
+                "Corpo humano e sistemas": {
+                        "icone": "🫀",
+                        "resumo": "Os sistemas do corpo trabalham de forma integrada.",
+                        "conteudo": "O sistema digestório processa alimentos; respiratório realiza trocas gasosas; circulatório transporta substâncias; urinário elimina resíduos; nervoso coordena respostas. Os sistemas dependem uns dos outros para manter o equilíbrio do organismo.",
+                        "pontos": [
+                                "Sistemas têm órgãos com funções relacionadas.",
+                                "Respiração envolve trocas gasosas.",
+                                "Circulação transporta gases e nutrientes.",
+                                "Os sistemas trabalham de forma integrada."
+                        ],
+                        "questoes": [
+                                "Qual a função do sistema respiratório?",
+                                "O que o sistema circulatório transporta?",
+                                "Por que os sistemas dependem uns dos outros?"
+                        ],
+                        "dica": "Estude cada sistema pela função e depois ligue um sistema ao outro."
+                },
+                "Saúde e prevenção": {
+                        "icone": "🛡️",
+                        "resumo": "Prevenção reduz riscos e ajuda a proteger a saúde individual e coletiva.",
+                        "conteudo": "Higiene, vacinação, alimentação adequada, atividade física, sono e acompanhamento de saúde contribuem para a prevenção. Também é importante compreender formas de transmissão, fatores de risco e medidas de proteção.",
+                        "pontos": [
+                                "Prevenção reduz riscos.",
+                                "Vacinação ajuda na proteção coletiva.",
+                                "Higiene pode reduzir transmissão de agentes infecciosos.",
+                                "Saúde depende de vários fatores."
+                        ],
+                        "questoes": [
+                                "Cite três medidas de prevenção.",
+                                "Como a vacinação ajuda?",
+                                "Por que higiene contribui para prevenção?"
+                        ],
+                        "dica": "Prevenção é agir antes que o problema aconteça."
+                }
+        },
+        "historia": {
+                "Independência das Treze Colônias": {
+                        "icone": "🇺🇸",
+                        "resumo": "As Treze Colônias declararam independência da Inglaterra em 1776.",
+                        "conteudo": "Após a Guerra dos Sete Anos, a Inglaterra buscou aumentar a arrecadação nas colônias. Leis como a do Açúcar e do Selo geraram resistência. O conflito aumentou, a Declaração de Independência foi aprovada em 1776 e a guerra continuou até a vitória dos colonos e seus aliados.",
+                        "pontos": [
+                                "A Guerra dos Sete Anos aumentou tensões fiscais.",
+                                "Colonos criticaram impostos sem representação.",
+                                "A independência foi declarada em 1776.",
+                                "Os Estados Unidos surgiram como país independente."
+                        ],
+                        "questoes": [
+                                "Por que a Inglaterra aumentou impostos?",
+                                "O que significa 'não há tributação sem representação'?",
+                                "Em que ano foi declarada a independência?"
+                        ],
+                        "dica": "Sequência: Guerra dos Sete Anos → impostos → resistência → independência."
+                },
+                "Revolução Francesa": {
+                        "icone": "🇫🇷",
+                        "resumo": "A Revolução Francesa começou em 1789 e abalou o Antigo Regime.",
+                        "conteudo": "A sociedade francesa apresentava privilégios e desigualdades entre estamentos. Crise financeira, problemas sociais e ideias iluministas contribuíram para o processo. A queda da Bastilha e a Declaração dos Direitos do Homem e do Cidadão são marcos importantes.",
+                        "pontos": [
+                                "Começou em 1789.",
+                                "Questionou privilégios do Antigo Regime.",
+                                "Ideias iluministas influenciaram o movimento.",
+                                "Liberdade e igualdade jurídica foram princípios importantes."
+                        ],
+                        "questoes": [
+                                "O que era o Antigo Regime?",
+                                "Cite uma causa da Revolução Francesa.",
+                                "Por que 1789 é importante?"
+                        ],
+                        "dica": "1789 = crise + desigualdade + Iluminismo + ruptura com o Antigo Regime."
+                },
+                "Iluminismo": {
+                        "icone": "💡",
+                        "resumo": "O Iluminismo valorizou a razão e criticou formas tradicionais de poder.",
+                        "conteudo": "Pensadores iluministas defenderam ideias como liberdade, direitos, tolerância e limites ao poder político. As propostas variavam entre autores, mas contribuíram para questionar o absolutismo e instituições tradicionais.",
+                        "pontos": [
+                                "Valorização da razão.",
+                                "Crítica ao absolutismo.",
+                                "Defesa de direitos e liberdades em diferentes autores.",
+                                "Influência em debates políticos e revoluções."
+                        ],
+                        "questoes": [
+                                "O que os iluministas criticavam?",
+                                "Por que a razão era valorizada?",
+                                "Como o Iluminismo influenciou revoluções?"
+                        ],
+                        "dica": "Iluminismo = usar a razão para questionar ideias e instituições."
+                },
+                "Independência da América Espanhola": {
+                        "icone": "🌎",
+                        "resumo": "Colônias espanholas na América passaram por processos de independência principalmente no início do século XIX.",
+                        "conteudo": "As guerras napoleônicas enfraqueceram a monarquia espanhola. Movimentos de independência cresceram em diferentes regiões, com participação de criollos, grupos populares e lideranças como Simón Bolívar e José de San Martín. Os processos tiveram projetos e conflitos diferentes.",
+                        "pontos": [
+                                "A crise da monarquia espanhola favoreceu movimentos de independência.",
+                                "Criollos tiveram papel importante.",
+                                "Os processos variaram entre as regiões.",
+                                "Bolívar e San Martín foram lideranças importantes."
+                        ],
+                        "questoes": [
+                                "Quem eram os criollos?",
+                                "Como as guerras napoleônicas afetaram a Espanha?",
+                                "Cite uma liderança das independências."
+                        ],
+                        "dica": "Não trate toda a América Espanhola como um único processo."
+                },
+                "Brasil: Independência e Primeiro Reinado": {
+                        "icone": "🇧🇷",
+                        "resumo": "A independência do Brasil ocorreu em 1822 e foi seguida pelo Primeiro Reinado.",
+                        "conteudo": "A chegada da corte portuguesa ao Brasil em 1808 transformou a administração e a economia. D. Pedro declarou a independência em 1822. No Primeiro Reinado, o novo Estado foi organizado, a Constituição de 1824 foi outorgada e houve conflitos políticos e econômicos. D. Pedro I abdicou em 1831.",
+                        "pontos": [
+                                "1808: chegada da corte portuguesa.",
+                                "1822: independência.",
+                                "1824: Constituição outorgada.",
+                                "1831: abdicação de D. Pedro I."
+                        ],
+                        "questoes": [
+                                "O que aconteceu em 1808?",
+                                "Quem declarou a independência?",
+                                "Quando D. Pedro I abdicou?"
+                        ],
+                        "dica": "Linha do tempo: 1808 → 1822 → 1824 → 1831."
+                },
+                "Período Regencial": {
+                        "icone": "🏛️",
+                        "resumo": "O Período Regencial ocorreu entre 1831 e 1840, quando D. Pedro II ainda era menor.",
+                        "conteudo": "Como D. Pedro II era menor de idade, o Brasil foi governado por regentes. O período teve disputas políticas e revoltas, como Cabanagem, Balaiada, Sabinada e Farroupilha. O Golpe da Maioridade antecipou o início do governo pessoal de D. Pedro II em 1840.",
+                        "pontos": [
+                                "Começou em 1831.",
+                                "D. Pedro II era menor de idade.",
+                                "Houve várias revoltas provinciais.",
+                                "Golpe da Maioridade ocorreu em 1840."
+                        ],
+                        "questoes": [
+                                "Por que houve regências?",
+                                "Cite uma revolta do período.",
+                                "O que foi o Golpe da Maioridade?"
+                        ],
+                        "dica": "Regências = menoridade de Pedro II + disputas políticas + revoltas."
+                }
+        },
+        "geografia": {
+                "Regionalização da América do Sul": {
+                        "icone": "🌎",
+                        "resumo": "A América do Sul pode ser dividida segundo diferentes critérios.",
+                        "conteudo": "Regionalizar é dividir um espaço de acordo com critérios. Podemos usar aspectos físicos, culturais, históricos, econômicos ou políticos. Por isso, um mesmo continente pode ter mais de uma regionalização válida.",
+                        "pontos": [
+                                "Regionalizar é dividir segundo critérios.",
+                                "Existem diferentes regionalizações.",
+                                "Critérios podem ser físicos, econômicos ou culturais.",
+                                "É importante identificar qual critério está sendo usado."
+                        ],
+                        "questoes": [
+                                "O que significa regionalizar?",
+                                "Por que existem diferentes regionalizações?",
+                                "Cite um critério de regionalização."
+                        ],
+                        "dica": "Sempre pergunte: divisão baseada em qual critério?"
+                },
+                "América Platina": {
+                        "icone": "🗺️",
+                        "resumo": "A América Platina está relacionada à Bacia do Rio da Prata e envolve Argentina, Paraguai e Uruguai.",
+                        "conteudo": "Argentina, Paraguai e Uruguai são associados à América Platina. A Bacia do Prata possui importância para transporte, abastecimento, produção de energia e atividades econômicas. Os países possuem diferenças, mas também conexões históricas e comerciais.",
+                        "pontos": [
+                                "Rio da Prata é elemento importante.",
+                                "Argentina, Paraguai e Uruguai formam a região no critério mais usado.",
+                                "Hidrovias têm importância econômica.",
+                                "Há relações históricas e comerciais."
+                        ],
+                        "questoes": [
+                                "Quais países formam a América Platina?",
+                                "Por que os rios são importantes?",
+                                "Qual a importância das hidrovias?"
+                        ],
+                        "dica": "Platina lembra Prata: pense na Bacia do Rio da Prata."
+                },
+                "América Andina": {
+                        "icone": "⛰️",
+                        "resumo": "A América Andina reúne países relacionados à Cordilheira dos Andes.",
+                        "conteudo": "Os Andes se estendem pela borda oeste da América do Sul e influenciam relevo, clima, ocupação e atividades econômicas. Colômbia, Equador, Peru, Bolívia e Chile são frequentemente associados à região andina, dependendo do critério.",
+                        "pontos": [
+                                "Andes ficam no oeste da América do Sul.",
+                                "A cordilheira influencia relevo e clima.",
+                                "A região possui diversidade ambiental e cultural.",
+                                "Mineração e agricultura são importantes em várias áreas."
+                        ],
+                        "questoes": [
+                                "Onde ficam os Andes?",
+                                "Cite dois países andinos.",
+                                "Como a cordilheira influencia a ocupação?"
+                        ],
+                        "dica": "Andes = grande cadeia montanhosa no oeste da América do Sul."
+                },
+                "Relevo e hidrografia": {
+                        "icone": "🏔️",
+                        "resumo": "Relevo e rios influenciam paisagens, ocupação e atividades econômicas.",
+                        "conteudo": "A América do Sul possui a Cordilheira dos Andes no oeste e grandes áreas de planaltos e planícies. Entre suas grandes bacias estão Amazônica e Platina. Rios são usados para abastecimento, transporte, agricultura e produção de energia.",
+                        "pontos": [
+                                "Andes dominam o oeste.",
+                                "A Bacia Amazônica é muito extensa.",
+                                "Rios possuem importância econômica e ambiental.",
+                                "Relevo influencia ocupação e circulação."
+                        ],
+                        "questoes": [
+                                "Qual cadeia montanhosa fica no oeste?",
+                                "Cite uma função econômica dos rios.",
+                                "Por que o relevo influencia a ocupação?"
+                        ],
+                        "dica": "No mapa físico, compare montanhas, planaltos e planícies."
+                },
+                "Climas da América do Sul": {
+                        "icone": "🌦️",
+                        "resumo": "A América do Sul apresenta grande diversidade climática.",
+                        "conteudo": "Latitude, altitude, relevo, maritimidade e correntes marítimas influenciam os climas. Há áreas equatoriais, tropicais, subtropicais, desérticas e frias. O clima é um padrão de longo prazo, diferente do tempo atmosférico de um dia.",
+                        "pontos": [
+                                "Latitude influencia temperatura.",
+                                "Altitude pode reduzir temperaturas.",
+                                "Correntes marítimas afetam áreas costeiras.",
+                                "Clima é diferente de tempo atmosférico."
+                        ],
+                        "questoes": [
+                                "Por que o continente possui vários climas?",
+                                "Como altitude influencia a temperatura?",
+                                "Cite um fator climático."
+                        ],
+                        "dica": "Não confunda clima, padrão de longo prazo, com tempo, condição momentânea."
+                },
+                "População e urbanização": {
+                        "icone": "🏙️",
+                        "resumo": "A população sul-americana é distribuída de forma desigual e grande parte vive em cidades.",
+                        "conteudo": "A concentração populacional depende de história da ocupação, empregos, infraestrutura, relevo e condições naturais. A urbanização transforma cidades e pode trazer problemas de mobilidade, moradia, saneamento e poluição.",
+                        "pontos": [
+                                "Urbanização é transformação e crescimento urbano.",
+                                "A população não se distribui igualmente.",
+                                "Emprego e infraestrutura influenciam a concentração.",
+                                "Cidades enfrentam desafios sociais e ambientais."
+                        ],
+                        "questoes": [
+                                "O que é urbanização?",
+                                "Por que a população se concentra em algumas áreas?",
+                                "Cite um desafio urbano."
+                        ],
+                        "dica": "Pense em emprego, infraestrutura e história para entender a distribuição da população."
+                }
+        },
+        "ingles": {
+                "Some e Any": {
+                        "icone": "🇬🇧",
+                        "resumo": "Some e any indicam quantidade indefinida.",
+                        "conteudo": "Some aparece com frequência em frases afirmativas: I have some books. Any é comum em perguntas e negativas: Do you have any books? e I don't have any books. Existem exceções, especialmente em ofertas e pedidos.",
+                        "pontos": [
+                                "Some é comum em afirmativas.",
+                                "Any é comum em negativas e perguntas.",
+                                "Podem acompanhar contáveis no plural e incontáveis.",
+                                "O contexto influencia o uso."
+                        ],
+                        "questoes": [
+                                "Complete: I have ___ water.",
+                                "Complete: Do you have ___ questions?",
+                                "Complete: I don't have ___ money."
+                        ],
+                        "dica": "Regra inicial: afirmativa = some; pergunta/negativa = any, lembrando exceções."
+                },
+                "Much e Many": {
+                        "icone": "🔢",
+                        "resumo": "Much e many expressam quantidade.",
+                        "conteudo": "Many é usado com substantivos contáveis no plural: many books. Much é usado com substantivos incontáveis: much water. How many pergunta sobre contáveis e how much sobre incontáveis.",
+                        "pontos": [
+                                "Many + contáveis no plural.",
+                                "Much + incontáveis.",
+                                "How many + contáveis.",
+                                "How much + incontáveis."
+                        ],
+                        "questoes": [
+                                "___ books: much ou many?",
+                                "___ water: much ou many?",
+                                "Como perguntar 'quanto dinheiro' em inglês?"
+                        ],
+                        "dica": "Se dá para contar unidades, pense em many. Se não dá, pense em much."
+                },
+                "Music vocabulary": {
+                        "icone": "🎵",
+                        "resumo": "Vocabulário musical ajuda a falar de estilos, instrumentos e apresentações.",
+                        "conteudo": "Palavras importantes: singer, band, song, concert, guitar, drums, piano, melody, rhythm e genre. Para preferências, use I like, I love, I don't like e My favorite genre is...",
+                        "pontos": [
+                                "Singer = cantor(a).",
+                                "Band = banda.",
+                                "Song = música/canção.",
+                                "Concert = show/concerto.",
+                                "Genre = gênero musical."
+                        ],
+                        "questoes": [
+                                "Como dizer banda em inglês?",
+                                "Como dizer cantor?",
+                                "Complete: My favorite ___ is rock."
+                        ],
+                        "dica": "Associe as palavras a instrumentos e situações musicais."
+                },
+                "Prefixes and suffixes": {
+                        "icone": "🔤",
+                        "resumo": "Prefixos e sufixos são partes adicionadas às palavras.",
+                        "conteudo": "Prefixo vem antes da base, como un- em unhappy. Sufixo vem depois, como -ful em helpful. Essas partes podem alterar o significado ou a classe da palavra, mas o sentido deve ser analisado no contexto.",
+                        "pontos": [
+                                "Prefix vem antes.",
+                                "Suffix vem depois.",
+                                "Podem mudar significado ou classe.",
+                                "Conhecer partes ajuda a deduzir palavras novas."
+                        ],
+                        "questoes": [
+                                "O que é prefixo?",
+                                "O que é sufixo?",
+                                "Que efeito un- costuma produzir?"
+                        ],
+                        "dica": "Prefix = antes; suffix = depois."
+                },
+                "Simple Past": {
+                        "icone": "⏪",
+                        "resumo": "Simple Past fala de ações concluídas no passado.",
+                        "conteudo": "Verbos regulares frequentemente recebem -ed, como play → played. Verbos irregulares possuem formas próprias, como go → went. Em perguntas e negativas usamos did ou didn't com o verbo principal na forma base.",
+                        "pontos": [
+                                "Fala de ações concluídas no passado.",
+                                "Regular: play → played.",
+                                "Irregular: go → went.",
+                                "Did/didn't + verbo base em perguntas e negativas."
+                        ],
+                        "questoes": [
+                                "Passe 'I play' para o passado.",
+                                "Qual o passado de go?",
+                                "Complete: Did you ___ yesterday?"
+                        ],
+                        "dica": "Com did, o verbo principal volta para a forma base."
+                },
+                "Past Continuous": {
+                        "icone": "⏱️",
+                        "resumo": "Past Continuous descreve uma ação que estava acontecendo no passado.",
+                        "conteudo": "A estrutura é was/were + verbo com -ing. I was studying. They were playing. É comum usar while para ações simultâneas e when para uma ação em andamento interrompida por outra.",
+                        "pontos": [
+                                "I/he/she/it → was.",
+                                "You/we/they → were.",
+                                "Verbo principal recebe -ing.",
+                                "Pode aparecer com when e while."
+                        ],
+                        "questoes": [
+                                "Complete: I ___ studying.",
+                                "Complete: They ___ playing.",
+                                "Qual a estrutura do Past Continuous?"
+                        ],
+                        "dica": "Was/were + ing = ação que estava acontecendo."
+                },
+                "Would like": {
+                        "icone": "💬",
+                        "resumo": "Would like expressa desejos ou pedidos de forma educada.",
+                        "conteudo": "Usamos I would like + substantivo ou I would like to + verbo. A forma curta é I'd like. Would you like...? é usada para oferecer algo ou perguntar educadamente sobre uma preferência.",
+                        "pontos": [
+                                "I would like = eu gostaria de.",
+                                "Would you like...? = você gostaria...?",
+                                "Would like to + verbo.",
+                                "É uma estrutura educada."
+                        ],
+                        "questoes": [
+                                "Traduza: I would like some water.",
+                                "Complete: I would like to ___.",
+                                "Como oferecer algo com Would you like...?"
+                        ],
+                        "dica": "Would like é uma forma educada de expressar desejo ou fazer pedido."
+                },
+                "Comparatives and superlatives": {
+                        "icone": "📈",
+                        "resumo": "Comparativos comparam e superlativos destacam um elemento de um grupo.",
+                        "conteudo": "Adjetivos curtos frequentemente usam -er no comparativo e -est no superlativo. Adjetivos maiores geralmente usam more e most. Algumas formas são irregulares, como good → better → best.",
+                        "pontos": [
+                                "Comparativo normalmente compara dois.",
+                                "Superlativo destaca um em um grupo.",
+                                "Adjetivos curtos podem usar -er/-est.",
+                                "Good → better → best."
+                        ],
+                        "questoes": [
+                                "Qual o comparativo de good?",
+                                "Qual a diferença entre better e best?",
+                                "Complete: This car is ___ than that one."
+                        ],
+                        "dica": "Comparativo costuma aparecer com than; superlativo costuma usar the."
+                }
+        },
+        "filosofia": {
+                "Filosofia e diálogo": {
+                        "icone": "🗣️",
+                        "resumo": "Filosofia investiga problemas por meio de perguntas, argumentos e diálogo.",
+                        "conteudo": "Filosofar não é apenas dar opinião. É questionar conceitos, analisar razões, comparar posições e revisar conclusões. O diálogo permite confrontar ideias e construir argumentos melhores.",
+                        "pontos": [
+                                "Perguntar faz parte da investigação.",
+                                "Argumentos precisam de razões.",
+                                "Diálogo permite analisar posições diferentes.",
+                                "Reflexão crítica é essencial."
+                        ],
+                        "questoes": [
+                                "Qual a diferença entre opinião e argumento?",
+                                "Por que o diálogo é importante?",
+                                "O que significa questionar filosoficamente?"
+                        ],
+                        "dica": "Não basta dizer 'eu acho': explique por que você pensa isso."
+                },
+                "Dialética": {
+                        "icone": "🔄",
+                        "resumo": "Dialética pode analisar ideias por meio de relações, contradições e transformações.",
+                        "conteudo": "Em diferentes tradições, dialética possui sentidos diferentes. Em Hegel, o desenvolvimento envolve contradições e superações que produzem novas determinações. Por isso, uma ideia é analisada em relação ao que a contradiz e ao processo de transformação.",
+                        "pontos": [
+                                "Contradições podem participar do desenvolvimento.",
+                                "Hegel é associado à dialética moderna.",
+                                "A análise considera relações e transformações.",
+                                "Dialética não é simplesmente uma discussão."
+                        ],
+                        "questoes": [
+                                "O que é uma contradição?",
+                                "Por que Hegel é associado à dialética?",
+                                "Como uma ideia pode se transformar ao enfrentar um problema?"
+                        ],
+                        "dica": "Pense em uma tensão entre ideias que leva a uma compreensão mais desenvolvida."
+                },
+                "Hegel e o espírito": {
+                        "icone": "🧠",
+                        "resumo": "Hegel descreve o desenvolvimento do Espírito como processo de autoconhecimento e realização da liberdade.",
+                        "conteudo": "Na filosofia de Hegel, o Espírito passa por formas de desenvolvimento. O espírito subjetivo está ligado à consciência individual; o objetivo envolve instituições e vida social; o absoluto aparece na arte, religião e filosofia como formas de o Espírito compreender a si mesmo.",
+                        "pontos": [
+                                "Subjetivo: dimensão individual.",
+                                "Objetivo: instituições e vida social.",
+                                "Absoluto: arte, religião e filosofia.",
+                                "O desenvolvimento envolve superação de contradições."
+                        ],
+                        "questoes": [
+                                "O que caracteriza o espírito subjetivo?",
+                                "O que é espírito objetivo?",
+                                "Quais formas aparecem no espírito absoluto?"
+                        ],
+                        "dica": "Guarde a sequência: subjetivo → objetivo → absoluto."
+                },
+                "Ética e escolhas": {
+                        "icone": "⚖️",
+                        "resumo": "Ética investiga ações, valores, responsabilidades e escolhas.",
+                        "conteudo": "Problemas éticos envolvem decisões e consequências. Analisar eticamente exige justificar posições, considerar pessoas afetadas e distinguir preferências pessoais de argumentos sobre valores.",
+                        "pontos": [
+                                "Ética envolve ações e valores.",
+                                "Consequências podem entrar na análise.",
+                                "Responsabilidade relaciona ação e agente.",
+                                "Teorias diferentes podem propor respostas diferentes."
+                        ],
+                        "questoes": [
+                                "O que é responsabilidade?",
+                                "Por que uma escolha pode ser um problema ético?",
+                                "Qual a diferença entre preferência e argumento ético?"
+                        ],
+                        "dica": "Analise ação, pessoas afetadas, valores e consequências."
+                }
+        }
+},
+
+
+    "9": {
+
+        matematica: {
+
+            "Funções": {
+                resumo: "Funções relacionam valores de uma variável a valores de outra variável de acordo com uma regra.",
+                pontos: [
+                    "Uma função estabelece uma relação.",
+                    "Podemos representar funções por tabelas, gráficos e fórmulas.",
+                    "As variáveis podem assumir diferentes valores."
+                ],
+                questoes: [
+                    "O que é uma função?",
+                    "Como uma função pode ser representada?",
+                    "O que são variáveis?"
+                ]
+            }
+
+        },
+
+        ciencias: {
+
+            "Genética": {
+                resumo: "A genética estuda a hereditariedade e a transmissão de características entre gerações.",
+                pontos: [
+                    "Estuda a hereditariedade.",
+                    "Os genes estão relacionados às características dos seres vivos.",
+                    "O DNA contém informações genéticas."
+                ],
+                questoes: [
+                    "O que estuda a genética?",
+                    "O que são genes?",
+                    "Onde está armazenada a informação genética?"
+                ]
+            }
+
+        }
+
+    }
+
+};
+
+
+/* =========================
+   LOGIN
+========================= */
+
+function mostrarCadastro() {
+
+    document.getElementById("loginArea").style.display = "none";
+
+    document.getElementById("cadastroArea").style.display = "block";
+
+}
+
+
+function mostrarLogin() {
+
+    document.getElementById("cadastroArea").style.display = "none";
+
+    document.getElementById("loginArea").style.display = "block";
+
+}
+
+
+function cadastrar() {
+
+    const nome =
+        document.getElementById("cadastroNome").value.trim();
+
+    const email =
+        document.getElementById("cadastroEmail").value.trim();
+
+    const senha =
+        document.getElementById("cadastroSenha").value;
+
+
+    if (!nome || !email || !senha) {
+
+        document.getElementById("erroCadastro").textContent =
+            "Preencha todos os campos.";
+
+        return;
+
+    }
+
+
+    if (senha.length < 4) {
+
+        document.getElementById("erroCadastro").textContent =
+            "A senha precisa ter pelo menos 4 caracteres.";
+
+        return;
+
+    }
+
+
+    const usuario = {
+
+        nome: nome,
+        email: email,
+        senha: senha,
+        ano: "8",
+        temasEstudados: 0
+
+    };
+
+
+    localStorage.setItem(
+        "wheeseEstudosUsuario",
+        JSON.stringify(usuario)
+    );
+
+
+    alert("Conta criada com sucesso!");
+
+    mostrarLogin();
+
+}
+
+
+function entrar() {
+
+    const email =
+        document.getElementById("loginEmail").value.trim();
+
+    const senha =
+        document.getElementById("loginSenha").value;
+
+
+    const salvo =
+        localStorage.getItem("wheeseEstudosUsuario");
+
+
+    if (!salvo) {
+
+        document.getElementById("erroLogin").textContent =
+            "Nenhuma conta encontrada. Crie uma conta primeiro.";
+
+        return;
+
+    }
+
+
+    const usuario =
+        JSON.parse(salvo);
+
+
+    if (
+        email === usuario.email &&
+        senha === usuario.senha
+    ) {
+
+        abrirSite(usuario);
+
+    } else {
+
+        document.getElementById("erroLogin").textContent =
+            "Email ou senha incorretos.";
+
+    }
+
+}
+
+
+function abrirSite(usuario) {
+
+    document.getElementById("telaLogin").style.display =
+        "none";
+
+    document.getElementById("site").style.display =
+        "block";
+
+
+    document.getElementById("nomeUsuario").textContent =
+        usuario.nome;
+
+
+    document.getElementById("emailConfiguracoes").textContent =
+        usuario.email;
+
+
+    document.getElementById("configAno").value =
+        usuario.ano || "8";
+
+
+    document.getElementById("progressoAno").textContent =
+        (usuario.ano || "8") + "º ano";
+
+
+    document.getElementById("contadorTemas").textContent =
+        usuario.temasEstudados || 0;
+
+}
+
+
+function sair() {
+
+    document.getElementById("site").style.display =
+        "none";
+
+    document.getElementById("telaLogin").style.display =
+        "flex";
+
+}
+
+
+/* =========================
+   NAVEGAÇÃO
+========================= */
+
+function mostrarPagina(nome) {
+
+    const paginas =
+        document.querySelectorAll(".pagina");
+
+
+    paginas.forEach(function(pagina) {
+
+        pagina.classList.remove("ativa");
+
+    });
+
+
+    const pagina =
+        document.getElementById("pagina-" + nome);
+
+
+    if (pagina) {
+
+        pagina.classList.add("ativa");
+
+    }
+
+}
+
+
+/* =========================
+   MATÉRIAS
+========================= */
+
+function atualizarMaterias() {
+
+    const ano =
+        document.getElementById("ano").value;
+
+    const materia =
+        document.getElementById("materia");
+
+
+    materia.innerHTML =
+        '<option value="">Escolha uma matéria</option>';
+
+
+    const dados =
+        conteudos[ano];
+
+
+    if (!dados) return;
+
+
+    for (let nome in dados) {
+
+        const option =
+            document.createElement("option");
+
+        option.value = nome;
+
+        option.textContent =
+            nome.charAt(0).toUpperCase() +
+            nome.slice(1);
+
+        materia.appendChild(option);
+
+    }
+
+
+    document.getElementById("tema").innerHTML =
+        '<option value="">Escolha um tema</option>';
+
+}
+
+
+function atualizarTemas() {
+
+    const ano =
+        document.getElementById("ano").value;
+
+    const materia =
+        document.getElementById("materia").value;
+
+    const tema =
+        document.getElementById("tema");
+
+
+    tema.innerHTML =
+        '<option value="">Escolha um tema</option>';
+
+
+    if (
+        !conteudos[ano] ||
+        !conteudos[ano][materia]
+    ) {
+
+        return;
+
+    }
+
+
+    for (
+        let nome in conteudos[ano][materia]
+    ) {
+
+        const option =
+            document.createElement("option");
+
+        option.value = nome;
+
+        option.textContent = nome;
+
+        tema.appendChild(option);
+
+    }
+
+}
+
+
+/* =========================
+   ESTUDAR
+========================= */
+
+async function estudarTema() {
+    const ano = document.getElementById("ano")?.value;
+    const materia = document.getElementById("materia")?.value;
+    const campoTema = document.getElementById("temaDigitado");
+    const temaDigitado = campoTema?.value.trim();
+    const temaSelecionado = document.getElementById("tema")?.value;
+    const tema = temaDigitado || temaSelecionado;
+    const status = document.getElementById("statusConteudo");
+
+    if (!ano || !materia || !tema) return;
+
+    localStorage.setItem("estudoAtual", JSON.stringify({ ano, materia, tema }));
+    atualizarContextoIA();
+    mostrarPagina("estudar");
+
+    const materialLocal = conteudos?.[ano]?.[materia]?.[tema];
+    if (status) {
+        status.style.display = "block";
+        status.textContent = "⚡ Gerando sua aula... o conteúdo vai aparecer enquanto a IA responde.";
+    }
+
+    const resultado = document.getElementById("resultado");
+    resultado.style.display = "block";
+    document.getElementById("iconeTema").textContent = "⚡";
+    document.getElementById("tituloResultado").textContent = tema;
+    document.getElementById("subtituloResultado").textContent = "Preparando conteúdo...";
+    const box = document.getElementById("conteudoCompleto");
+    box.classList.add("ai-gerado");
+    box.textContent = "";
+    document.getElementById("resumo").textContent = "Gerando...";
+    document.getElementById("pontos").innerHTML = "";
+    document.getElementById("questoes").innerHTML = "";
+    document.getElementById("dica").textContent = "A IA está preparando sua aula.";
+
+    try {
+        const resposta = await fetch("/api/conteudo-stream", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ ano, materia, tema })
+        });
+
+        if (!resposta.ok) {
+            const erro = await resposta.json().catch(() => ({}));
+            throw new Error(erro.erro || "Não foi possível gerar o conteúdo.");
+        }
+
+        const reader = resposta.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = "";
+        let textoCompleto = "";
+
+        while (true) {
+            const { value, done } = await reader.read();
+            if (done) break;
+            buffer += decoder.decode(value, { stream: true });
+
+            const eventos = buffer.split("\n\n");
+            buffer = eventos.pop() || "";
+
+            for (const evento of eventos) {
+                const linha = evento.split("\n").find(l => l.startsWith("data: "));
+                if (!linha) continue;
+                const dados = JSON.parse(linha.slice(6));
+                if (dados.erro) throw new Error(dados.erro);
+                if (dados.texto) {
+                    textoCompleto += dados.texto;
+                    box.textContent = textoCompleto;
+                    box.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                }
+            }
+        }
+
+        if (!textoCompleto.trim()) throw new Error("A IA não retornou conteúdo.");
+        mostrarConteudoIA(textoCompleto, ano, materia, tema);
+        adicionarMensagemIA(`📚 Aula preparada: ${materia} • ${tema}\n\n${textoCompleto}`, "ia");
+        registrarEstudo();
+
+    } catch (erro) {
+        console.error(erro);
+        if (materialLocal) {
+            mostrarMaterial(materialLocal, ano, materia, tema);
+            adicionarMensagemIA("⚠️ A IA não respondeu agora, então mostrei o conteúdo cadastrado para este tema.\n\n" + erro.message, "ia");
+            registrarEstudo();
+        } else {
+            box.textContent = "Não consegui gerar a aula agora. " + erro.message;
+        }
+    } finally {
+        if (status) status.style.display = "none";
+    }
+}
+function mostrarConteudoIA(texto, ano, materia, tema) {
+    const nomes = {
+        matematica: "Matemática",
+        portugues: "Português",
+        ciencias: "Ciências",
+        historia: "História",
+        geografia: "Geografia",
+        ingles: "Inglês",
+        filosofia: "Filosofia",
+        artes: "Artes",
+        edfisica: "Educação Física"
+    };
+
+    document.getElementById("resultado").style.display = "block";
+    document.getElementById("iconeTema").textContent = "🤖";
+    document.getElementById("tituloResultado").textContent = tema;
+    document.getElementById("subtituloResultado").textContent = `${nomes[materia] || materia} • ${ano}º ano • Conteúdo gerado pela IA`;
+
+    const box = document.getElementById("conteudoCompleto");
+    box.classList.add("ai-gerado");
+    box.textContent = texto || "Não foi possível gerar o conteúdo.";
+
+    document.getElementById("resumo").textContent = "A aula completa está acima. Use o resumo da própria explicação para revisar depois.";
+    document.getElementById("dica").textContent = "Leia a explicação, tente responder às questões e depois use a IA para tirar dúvidas.";
+
+    const pontos = document.getElementById("pontos");
+    pontos.innerHTML = "";
+    const destaque = document.createElement("li");
+    destaque.textContent = "O conteúdo foi preparado automaticamente para a matéria e o tema escolhidos.";
+    pontos.appendChild(destaque);
+
+    const questoes = document.getElementById("questoes");
+    questoes.innerHTML = "";
+    const aviso = document.createElement("li");
+    aviso.textContent = "As questões para praticar estão incluídas na aula gerada acima.";
+    questoes.appendChild(aviso);
+
+    const visual = document.getElementById("visualTema");
+    visual.textContent = "🤖";
+    visual.style.display = "block";
+
+    mostrarPagina("estudar");
+    document.getElementById("resultado").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function mostrarMaterial(material, ano, materia, tema) {
+    document.getElementById("resultado").style.display = "block";
+    document.getElementById("conteudoCompleto").classList.remove("ai-gerado");
+    const nomes = {matematica:"Matemática", portugues:"Português", ciencias:"Ciências", historia:"História", geografia:"Geografia", ingles:"Inglês", filosofia:"Filosofia", artes:"Artes", edfisica:"Educação Física"};
+    document.getElementById("iconeTema").textContent = material.icone || "📚";
+    document.getElementById("tituloResultado").textContent = tema;
+    document.getElementById("subtituloResultado").textContent = `${nomes[materia] || materia} • ${ano}º ano`;
+    document.getElementById("resumo").textContent = material.resumo || "";
+    document.getElementById("dica").textContent = material.dica || "Revise os pontos e tente responder às questões sem consultar o material.";
+    const box=document.getElementById("conteudoCompleto"); box.innerHTML="";
+    (material.conteudo||"").split(/\n+/).filter(Boolean).forEach(t=>{const p=document.createElement("p");p.textContent=t;box.appendChild(p);});
+    const pontos=document.getElementById("pontos"); pontos.innerHTML=""; (material.pontos||[]).forEach(t=>{const li=document.createElement("li");li.textContent=t;pontos.appendChild(li);});
+    const questoes=document.getElementById("questoes"); questoes.innerHTML=""; (material.questoes||[]).forEach(t=>{const li=document.createElement("li");li.textContent=t;questoes.appendChild(li);});
+    const visual=document.getElementById("visualTema"); visual.textContent=material.icone||"📚"; visual.style.display=material.icone?"block":"none";
+    mostrarPagina("estudar"); document.getElementById("resultado").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+
+/* =========================
+   PROGRESSO
+========================= */
+
+function registrarEstudo() {
+
+    const salvo =
+        localStorage.getItem("wheeseEstudosUsuario");
+
+
+    if (!salvo) return;
+
+
+    const usuario =
+        JSON.parse(salvo);
+
+
+    usuario.temasEstudados =
+        (usuario.temasEstudados || 0) + 1;
+
+
+    localStorage.setItem(
+        "wheeseEstudosUsuario",
+        JSON.stringify(usuario)
+    );
+
+
+    document.getElementById("contadorTemas").textContent =
+        usuario.temasEstudados;
+
+}
+
+
+/* =========================
+   CONFIGURAÇÕES
+========================= */
+
+function modoEscuro() {
+
+    document.body.classList.add("dark");
+
+    localStorage.setItem(
+        "temaWheeseEstudos",
+        "escuro"
+    );
+
+}
+
+
+function modoClaro() {
+
+    document.body.classList.remove("dark");
+
+    localStorage.setItem(
+        "temaWheeseEstudos",
+        "claro"
+    );
+
+}
+
+
+function aumentarTexto() {
+
+    document.body.style.fontSize =
+        "18px";
+
+}
+
+
+function diminuirTexto() {
+
+    document.body.style.fontSize =
+        "15px";
+
+}
+
+
+function salvarAnoConfig() {
+
+    const ano =
+        document.getElementById("configAno").value;
+
+
+    const salvo =
+        localStorage.getItem("wheeseEstudosUsuario");
+
+
+    if (!salvo) return;
+
+
+    const usuario =
+        JSON.parse(salvo);
+
+
+    usuario.ano = ano;
+
+
+    localStorage.setItem(
+        "wheeseEstudosUsuario",
+        JSON.stringify(usuario)
+    );
+
+
+    document.getElementById("progressoAno").textContent =
+        ano + "º ano";
+
+
+    alert(
+        "Ano escolar alterado para " +
+        ano +
+        "º ano!"
+    );
+
+}
+
+
+/* =========================
+   VLIBRAS
+========================= */
+
+function abrirLibras() {
+
+    if (
+        window.VLibrasWidget &&
+        window.VLibrasWidget.initBtn
+    ) {
+
+        window.VLibrasWidget.initBtn.click();
+
+    } else {
+
+        alert(
+            "O VLibras ainda está carregando. Tente novamente em alguns segundos."
+        );
+
+    }
+
+}
+
+
+/* =========================
+   IA DO WHEESE ESTUDOS
+========================= */
+
+function escaparHTML(texto) {
+    return String(texto)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+function formatarRespostaIA(texto) {
+    let seguro = escaparHTML(texto);
+
+    // Remove todos os asteriscos
+    seguro = seguro.replace(/\*/g, "");
+
+    // Mantém as quebras de linha
+    seguro = seguro.replace(/\r?\n/g, "<br>");
+
+    return seguro;
+}
+
+function formatarRespostaIA(texto) {
+    let seguro = escaparHTML(texto);
+
+    // Remove todos os asteriscos
+    seguro = seguro.replace(/\*/g, "");
+
+    // Mantém as quebras de linha
+    seguro = seguro.replace(/\r?\n/g, "<br>");
+
+    return seguro;
+}
+
+function adicionarMensagemIA(texto, tipo) {
+
+    const chat = document.getElementById("iaChat");
+
+    const mensagem = document.createElement("div");
+
+    mensagem.className = "ia-mensagem " + (tipo === "usuario" ? "ia-user" : "ia-bot");
+
+    mensagem.innerHTML = formatarRespostaIA(texto);
+
+    chat.appendChild(mensagem);
+
+    chat.scrollTop = chat.scrollHeight;
+}
+
+function atualizarContextoIA() {
+    const contexto = document.getElementById("iaContexto");
+    if (!contexto) return;
+    const estudo = localStorage.getItem("estudoAtual");
+    if (!estudo) {
+        contexto.textContent = "📚 Sem tema específico selecionado.";
+        return;
+    }
+    try {
+        const dados = JSON.parse(estudo);
+        contexto.textContent = "📚 Contexto: " + (dados.materia || "Geral") + " • " + (dados.tema || "Geral") + " • " + (dados.ano ? dados.ano + "º ano" : "ano não informado");
+    } catch {
+        contexto.textContent = "📚 Sem tema específico selecionado.";
+    }
+}
+
+async function perguntarIA() {
+    const campo = document.getElementById("iaPergunta");
+    const botao = document.getElementById("iaEnviar");
+    const pergunta = campo.value.trim();
+
+    if (!pergunta) {
+        alert("Digite uma pergunta primeiro.");
+        campo.focus();
+        return;
+    }
+
+    adicionarMensagemIA(pergunta, "usuario");
+    campo.value = "";
+    if (botao) {
+       botao.disabled = true;
+botao.textContent = "⏳";
+    }
+
+    let ano = "8";
+    let materia = "Geral";
+    let tema = "Geral";
+    const estudo = localStorage.getItem("estudoAtual");
+
+    if (estudo) {
+        try {
+            const dados = JSON.parse(estudo);
+            ano = dados.ano || ano;
+            materia = dados.materia || materia;
+            tema = dados.tema || tema;
+        } catch {}
+    }
+
+    try {
+        const resposta = await fetch("/api/ia-stream", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ pergunta, ano, materia, tema })
+        });
+
+        if (!resposta.ok) {
+            const erro = await resposta.json().catch(() => ({}));
+            throw new Error(erro.erro || "Não foi possível falar com a IA.");
+        }
+
+        const mensagem = document.createElement("div");
+        mensagem.className = "ia-mensagem ia-bot";
+        document.getElementById("iaChat").appendChild(mensagem);
+
+        const reader = resposta.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = "";
+        let texto = "";
+
+        while (true) {
+            const { value, done } = await reader.read();
+            if (done) break;
+            buffer += decoder.decode(value, { stream: true });
+            const eventos = buffer.split("\n\n");
+            buffer = eventos.pop() || "";
+
+            for (const evento of eventos) {
+                const linha = evento.split("\n").find(l => l.startsWith("data: "));
+                if (!linha) continue;
+                const dados = JSON.parse(linha.slice(6));
+                if (dados.erro) throw new Error(dados.erro);
+                if (dados.texto) {
+                    texto += dados.texto;
+                   mensagem.innerHTML = formatarRespostaIA(texto);
+                    const chat = document.getElementById("iaChat");
+                    chat.scrollTop = chat.scrollHeight;
+                }
+            }
+        }
+    } catch (erro) {
+        adicionarMensagemIA("❌ Não consegui falar com o Gemini.\n\n" + erro.message + "\n\nConfira se o server.js está rodando com npm start.", "ia");
+    } finally {
+        if (botao) {
+           
+            
+        }
+        campo.focus();
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const campo = document.getElementById("iaPergunta");
+    if (campo) {
+        campo.addEventListener("keydown", function(evento) {
+            if (evento.key === "Enter" && !evento.shiftKey) {
+                evento.preventDefault();
+                perguntarIA();
+            }
+        });
+    }
+    const temaDigitado = document.getElementById("temaDigitado");
+    if (temaDigitado) {
+        let timerTema;
+        temaDigitado.addEventListener("input", function() {
+            clearTimeout(timerTema);
+            timerTema = setTimeout(() => {
+                const ano = document.getElementById("ano")?.value;
+                const materia = document.getElementById("materia")?.value;
+                if (ano && materia && temaDigitado.value.trim().length >= 3) {
+                    estudarTema();
+                }
+            }, 900);
+        });
+        temaDigitado.addEventListener("keydown", function(evento) {
+            if (evento.key === "Enter") {
+                evento.preventDefault();
+                estudarTema();
+            }
+        });
+    }
+    atualizarContextoIA();
+});
+
+
+
+/* =========================
+   CARREGAR CONFIGURAÇÕES
+========================= */
+
+const temaSalvo =
+    localStorage.getItem("temaWheeseEstudos");
+
+
+if (temaSalvo === "escuro") {
+
+    document.body.classList.add("dark");
+
+}
+
+
+/* =========================
+   MANTER LOGIN
+========================= */
+
+const usuarioSalvo =
+    localStorage.getItem("wheeseEstudosUsuario");
+
+
+if (usuarioSalvo) {
+
+    const usuario =
+        JSON.parse(usuarioSalvo);
+
+    /*
+       Por segurança, nesta versão o usuário
+       ainda precisa entrar novamente.
+    */
+
+}
+
+</script>
+
+</body>
+
+</html>
