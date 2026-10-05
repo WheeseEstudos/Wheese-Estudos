@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://wheese-estudos.onrender.com/sitemap.xml
