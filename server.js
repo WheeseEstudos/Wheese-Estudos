@@ -22,20 +22,23 @@ app.get("/", (req, res) => {
 });
 
 app.get("/robots.txt", (req, res) => {
-    res.status(200);
-    res.set("Content-Type", "text/plain; charset=utf-8");
-    res.end("TESTE ROBOTS FUNCIONANDO\n");
+    res.type("text/plain").send(
+`User-agent: *
+Allow: /
+
+Sitemap: https://wheese-estudos.onrender.com/sitemap.xml`
+    );
 });
 
 app.get("/sitemap.xml", (req, res) => {
-    res.status(200);
-    res.set("Content-Type", "application/xml; charset=utf-8");
-    res.end(`<?xml version="1.0" encoding="UTF-8"?>
+    res.type("application/xml").send(
+`<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://wheese-estudos.onrender.com/</loc>
     </url>
-</urlset>`);
+</urlset>`
+    );
 });
 if (!API_KEY) {
     console.warn("⚠️ GEMINI_API_KEY não foi configurada.");
@@ -112,7 +115,11 @@ async function transmitirGemini(res, prompt, maxOutputTokens) {
     }
 
     res.write("data: {\"fim\":true}\n\n");
-    res.end();
+    res.end(`User-agent: *
+Allow: /
+
+Sitemap: https://wheese-estudos.onrender.com/sitemap.xml
+`);
 }
 
 app.post("/api/conteudo-stream", async (req, res) => {
