@@ -22,15 +22,21 @@ app.get("/", (req, res) => {
 });
 
 app.get("/robots.txt", (req, res) => {
-    res.type("text/plain");
-    res.sendFile(path.join(ROOT, "robots.txt"));
+    res.status(200);
+    res.set("Content-Type", "text/plain; charset=utf-8");
+    res.end("TESTE ROBOTS FUNCIONANDO\n");
 });
 
 app.get("/sitemap.xml", (req, res) => {
-    res.type("application/xml");
-    res.sendFile(path.join(ROOT, "sitemap.xml"));
+    res.status(200);
+    res.set("Content-Type", "application/xml; charset=utf-8");
+    res.end(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://wheese-estudos.onrender.com/</loc>
+    </url>
+</urlset>`);
 });
-
 if (!API_KEY) {
     console.warn("⚠️ GEMINI_API_KEY não foi configurada.");
 }
